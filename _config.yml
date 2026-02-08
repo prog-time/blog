@@ -1,0 +1,12 @@
+title: ProgTime
+description: A blog about programming and technology.
+baseurl: ""
+url: ""
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+
+header_pages:
+  - about.md
