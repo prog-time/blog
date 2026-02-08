@@ -8,5 +8,13 @@ theme: minima
 plugins:
   - jekyll-feed
 
+show_excerpts: true
+
 header_pages:
   - about.md
+
+# Social links
+social:
+  github: https://github.com/prog-time
+  telegram: https://t.me/iliyalyachuk
+  youtube: https://youtube.com
