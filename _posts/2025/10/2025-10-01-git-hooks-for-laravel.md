@@ -36,146 +36,146 @@ categories: ["open source", "git-hooks", "laravel"]
 
 ```yaml
 services:
-    app:
-        build: .
-        container_name: pet
-        user: root
-        depends_on:
-            - pgdb
-            - redis
-            - loki
-        env_file:
-            - .env
-        working_dir: /var/www/
-        volumes:
-            - .:/var/www
-        networks:
-            - pet
-        dns:
-            - 8.8.8.8
-            - 1.1.1.1
+  app:
+    build: ../..
+    container_name: pet
+    user: root
+    depends_on:
+      - pgdb
+      - redis
+      - loki
+    env_file:
+      - .env
+    working_dir: /var/www/
+    volumes:
+      - .:/var/www
+    networks:
+      - pet
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 
-    pgdb:
-        container_name: pgdb
-        image: postgres
-        tty: true
-        restart: always
-        environment:
-            - POSTGRES_DB=${DB_DATABASE}
-            - POSTGRES_USER=${DB_USERNAME}
-            - POSTGRES_PASSWORD=${DB_PASSWORD}
-        ports:
-            - ${PGDB_PORT}
-        volumes:
-            - ./docker/postgres:/var/lib/postgresql/data
-        networks:
-            - pet
+  pgdb:
+    container_name: pgdb
+    image: postgres
+    tty: true
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - ${PGDB_PORT}
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+    networks:
+      - pet
 
-    nginx:
-        image: nginx:latest
-        container_name: nginx
-        restart: unless-stopped
-        ports:
-            - ${NGINX_PORT}
-            - "443:443"
-        volumes:
-            - .:/var/www
-            - ./docker/nginx:/etc/nginx/conf.d
-            - /etc/letsencrypt:/etc/letsencrypt:ro
-        environment:
-            - TZ=${SYSTEM_TIMEZONE}
-        depends_on:
-            - pgdb
-            - app
-            - pgadmin
-        networks:
-            - pet
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - ${NGINX_PORT}
+      - "443:443"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    environment:
+      - TZ=${SYSTEM_TIMEZONE}
+    depends_on:
+      - pgdb
+      - app
+      - pgadmin
+    networks:
+      - pet
 
-    pgadmin:
-        image: dpage/pgadmin4:latest
-        restart: always
-        depends_on:
-            - pgdb
-        environment:
-            - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
-            - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
-        ports:
-            - ${PGADMIN_PORT}
-        networks:
-            - pet
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    depends_on:
+      - pgdb
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - ${PGADMIN_PORT}
+    networks:
+      - pet
 
-    redis:
-        image: redis:latest
-        container_name: redis
-        restart: always
-        ports:
-            - ${REDIS_PORT}
-        environment:
-            - REDIS_PASSWORD=${REDIS_PASSWORD}
-        command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}"]
-        networks:
-            - pet
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - ${REDIS_PORT}
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}" ]
+    networks:
+      - pet
 
-    redisinsight:
-        image: redislabs/redisinsight:latest
-        container_name: redisinsight
-        ports:
-            - ${REDISINSIGHT_PORT}
-        volumes:
-            - ./docker/redisinsight:/db
-        restart: always
-        networks:
-            - pet
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - ${REDISINSIGHT_PORT}
+    volumes:
+      - ./docker/redisinsight:/db
+    restart: always
+    networks:
+      - pet
 
-    grafana:
-        image: grafana/grafana:latest
-        container_name: grafana
-        user: "472"
-        ports:
-            - ${GRAFANA_PORT}
-        environment:
-            - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
-            - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
-        volumes:
-            - ./docker/grafana:/var/lib/grafana
-        depends_on:
-            - loki
-        networks:
-            - pet
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    user: "472"
+    ports:
+      - ${GRAFANA_PORT}
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - ./docker/grafana:/var/lib/grafana
+    depends_on:
+      - loki
+    networks:
+      - pet
 
-    queue:
-        build: .
-        image: docker_template:latest
-        container_name: laravel_queue
-        restart: always
-        depends_on:
-            - app
-            - redis
-        env_file:
-            - .env
-        working_dir: /var/www
-        volumes:
-            - .:/var/www
-        command: php artisan queue:work --sleep=3 --tries=3 --timeout=90
-        networks:
-            - pet
-        dns:
-            - 8.8.8.8
-            - 1.1.1.1
+  queue:
+    build: ../..
+    image: docker_template:latest
+    container_name: laravel_queue
+    restart: always
+    depends_on:
+      - app
+      - redis
+    env_file:
+      - .env
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    command: php artisan queue:work --sleep=3 --tries=3 --timeout=90
+    networks:
+      - pet
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 
-    loki:
-        image: grafana/loki:latest
-        container_name: loki
-        ports:
-            - ${LOKI_PORT}
-        networks:
-            - pet
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - ${LOKI_PORT}
+    networks:
+      - pet
 
 volumes:
-    pgdata:
+  pgdata:
 networks:
-    pet:
-        driver: bridge
+  pet:
+    driver: bridge
 ```
 
 Под каждый сервис я разворачиваю отдельный контейнер, что позволяет гибко настраивать окружение, управлять зависимостями и обновлять компоненты независимо друг от друга. Такой подход делает разработку и поддержку проекта более удобной и масштабируемой.
