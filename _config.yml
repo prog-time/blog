@@ -10,6 +10,14 @@ plugins:
 
 show_excerpts: true
 
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  jobs:
+    output: true
+    permalink: /experience/:name/
+
 header_pages:
   - about.md
 
