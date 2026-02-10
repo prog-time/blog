@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<main class="main">
+  <section class="projects-section">
+    <header class="projects-header">
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.description -%}
+        <p class="projects-description">{{ page.description }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="projects-grid">
+      {%- for project in site.projects -%}
+        {%- include project-card.html project=project -%}
+      {%- endfor -%}
+    </div>
+
+  </section>
+</main>

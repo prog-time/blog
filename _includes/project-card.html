@@ -1,0 +1,33 @@
+<article class="project-card">
+  <a href="{{ project.url | relative_url }}">
+    <div class="project-card-header">
+      <h3>{{ project.title | escape }}</h3>
+      {%- if project.status -%}
+        <span class="project-status project-status--{{ project.status }}">{{ project.status }}</span>
+      {%- endif -%}
+    </div>
+    {%- if project.description -%}
+      <p>{{ project.description }}</p>
+    {%- endif -%}
+    {%- if project.tags.size > 0 -%}
+    <div class="tags-list">
+      {%- for tag in project.tags -%}
+        <span class="tag">{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- if project.stars or project.forks -%}
+    <div class="project-stats">
+      {%- if project.stars -%}
+        <span class="project-stat">&#9733; {{ project.stars }}</span>
+      {%- endif -%}
+      {%- if project.forks -%}
+        <span class="project-stat">&#9741; {{ project.forks }}</span>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+    <span class="project-card-more">Подробнее
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </span>
+  </a>
+</article>
