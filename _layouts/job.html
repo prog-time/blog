@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<main class="main">
+  <article class="article">
+    <header class="article-header">
+      <div class="article-meta">
+        {%- for tag in page.tags -%}
+          <span class="tag">{{ tag }}</span>
+        {%- endfor -%}
+        <time>{{ page.period }}</time>
+      </div>
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.company -%}
+        <p class="article-lead">{{ page.company }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if page.toc -%}
+    <div class="article-toc">
+      <p class="toc-title">Содержание:</p>
+      <ol>
+        {%- for item in page.toc -%}
+          <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+        {%- endfor -%}
+      </ol>
+    </div>
+    {%- endif -%}
+
+    <div class="article-content">
+      {{ content }}
+    </div>
+
+    <footer class="article-footer">
+      {%- if page.tags.size > 0 -%}
+      <div class="article-tags">
+        <span>Стек:</span>
+        {%- for tag in page.tags -%}
+          <span class="tag">{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      <a href="/about/#experience" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Вернуться к опыту работы
+      </a>
+    </footer>
+  </article>
+</main>
