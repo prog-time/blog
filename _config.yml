@@ -1,7 +1,22 @@
 title: ProgTime
-description: A blog about programming and technology.
+description: "Блог программиста Ильи Лящук — статьи о Laravel, PHP, автоматизации, open source и DevOps."
 baseurl: ""
-url: ""
+url: "https://lyashchuk.pro"
+lang: ru_RU
+
+author:
+  name: "Илья Лящук"
+  url: "https://lyashchuk.pro/about/"
+
+twitter:
+  username: prog_time
+  card: summary
+
+social:
+  name: "Илья Лящук"
+  links:
+    - https://github.com/prog-time
+    - https://t.me/iliyalyachuk
 
 theme: minima
 
@@ -21,7 +36,8 @@ collections:
 header_pages:
   - about.md
 
-# Social links
-social:
-  github: https://github.com/prog-time
-  telegram: https://t.me/iliyalyachuk
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png

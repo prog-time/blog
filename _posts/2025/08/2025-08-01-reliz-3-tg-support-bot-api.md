@@ -3,6 +3,8 @@ layout: post
 title: "Релиз №3 TG Support Bot: API для внешних источников и новые возможности"
 date: 2025-08-01
 categories: ["open source", "tg-support-bot"]
+description: "Третий релиз TG Support Bot: API для подключения внешних источников (чаты, CRM), новые возможности и планы развития проекта."
+keywords: "TG Support Bot, Laravel, Telegram, API, CRM, техподдержка, open source"
 ---
 Я выпустил релиз №3 для бота технической поддержки на GitHub.
 
