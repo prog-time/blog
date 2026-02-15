@@ -3,7 +3,8 @@ layout: post
 title: "Новый релиз Laravel-бота для техподдержки: интеграция с ВКонтакте и Docker-окружение с мониторингом"
 date: 2025-06-05
 categories: ["open source", "tg-support-bot"]
-
+description: "Релиз №2 TG Support Bot: интеграция с ВКонтакте и готовая Docker Compose-сборка с Grafana и Loki для мониторинга."
+keywords: "Laravel, Telegram бот, ВКонтакте, Docker Compose, Grafana, Loki, техподдержка, open source"
 ---
 Привет, коллеги.
 

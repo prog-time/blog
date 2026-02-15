@@ -4,6 +4,8 @@ title: "Как подключить плагин WYSIWYG в Strapi"
 date: 2025-03-04
 categories: ["strapi"]
 tags: ["javascript", "Strapi"]
+description: "Пошаговая инструкция по установке и настройке WYSIWYG-редактора CKEditor в Strapi: установка плагина, регистрация и настройка кастомного поля."
+keywords: "Strapi, WYSIWYG, CKEditor, плагин, редактор, JavaScript, кастомное поле"
 ---
 Для добавления WYSIWYG редактора в Strapi вам необходимо сделать несколько действий. В данной записи я расскажу "по шагам", как настроить поддержку поля с редактором WYSIWYG в ваше приложение на Strapi.
 
