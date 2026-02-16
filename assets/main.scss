@@ -48,11 +48,14 @@ body {
     align-items: center;
 
     .logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      font-size: 1.125rem;
-      color: $foreground;
+      display: flex;
+      align-items: center;
       text-decoration: none;
+
+      img {
+        height: 32px;
+        width: 32px;
+      }
     }
 
     .nav-links {
@@ -401,6 +404,12 @@ body {
       height: auto;
       border-radius: $radius;
       margin: 1.5rem 0;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 
@@ -416,6 +425,7 @@ body {
 
     .article-tags {
       display: flex;
+      flex-flow: wrap;
       align-items: center;
       gap: 0.5rem;
 
@@ -970,6 +980,38 @@ body {
   .timeline-info {
     margin-bottom: 0.75rem;
     text-align: left !important;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: $radius;
+    object-fit: contain;
+    transform: scale(0.95);
+    transition: transform 0.25s;
+  }
+
+  &.active img {
+    transform: scale(1);
   }
 }
 
