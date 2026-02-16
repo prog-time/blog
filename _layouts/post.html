@@ -13,6 +13,9 @@ layout: default
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: date_format }}</time>
       </div>
       <h1>{{ page.title | escape }}</h1>
+      <div class="article-views">
+        <img src="https://hitscounter.dev/api/hit?url={{ page.url | prepend: site.url | url_encode }}&label=Просмотров&color=%23737373" alt="views" />
+      </div>
       {%- if page.description -%}
         <p class="article-lead">{{ page.description }}</p>
       {%- endif -%}
