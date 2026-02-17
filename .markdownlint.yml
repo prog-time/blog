@@ -36,5 +36,11 @@ MD029: false
 # Disable blanks around fences — layout constraints
 MD031: false
 
+# Disable heading increment — blog posts may skip heading levels
+MD001: false
+
+# Disable table column style — flexible table formatting
+MD060: false
+
 # Require single trailing newline
 MD047: true
