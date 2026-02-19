@@ -3,4 +3,3 @@ _site/
 .sass-cache/
 .idea/
 vendor/
-node_modules/
