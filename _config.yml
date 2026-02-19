@@ -25,6 +25,9 @@ plugins:
 
 show_excerpts: true
 
+sass:
+  quiet_deps: true
+
 collections:
   projects:
     output: true
