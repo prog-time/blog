@@ -2,7 +2,7 @@
 layout: job
 title: "Middle Full Stack Developer"
 company: "Adeta"
-period: "Авг 2019 — Фев 2024"
+period: "Фев 2019 — Фев 2024"
 tags: ["PHP", "Laravel", "MySQL", "JavaScript"]
 toc:
   - id: about
@@ -14,10 +14,6 @@ toc:
 ---
 
 ## О компании {#about}
-
-Adeta — крупный интернет-магазин мебели (Владимир)
-
-## Задачи {#responsibilities}
 
 Участвовал в разработке и поддержке e-commerce платформы на Bitrix Framework, реализовывал внутренние микросервисы и интеграции с внешними сервисами и маркетплейсами для автоматизации бизнес-процессов компании.
 
