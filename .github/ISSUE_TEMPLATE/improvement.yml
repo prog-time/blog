@@ -1,0 +1,19 @@
+name: "Улучшение"
+description: "Предложение по улучшению сайта или контента"
+title: "[FEATURE] "
+labels: ["enhancement"]
+assignees:
+  - prog-time
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: "Идея"
+      placeholder: "Что улучшить и зачем"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: "Детали"
+      placeholder: "Как это должно работать"
