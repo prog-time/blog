@@ -1,0 +1,26 @@
+name: "Баг"
+description: "Что-то работает неправильно"
+title: "[BUG] "
+labels: ["bug"]
+assignees:
+  - prog-time
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Что происходит?"
+      placeholder: "Опиши проблему"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Что должно быть?"
+      placeholder: "Ожидаемое поведение"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: "URL страницы"
+      placeholder: "https://lyashchuk.pro/..."

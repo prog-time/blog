@@ -1,0 +1,29 @@
+name: "Новая статья"
+description: "Идея или задача на написание статьи"
+title: "[ARTICLE] "
+labels: ["article"]
+assignees:
+  - prog-time
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Тема"
+      placeholder: "О чём статья?"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Что разобрать"
+      placeholder: "Ключевые моменты, которые должны быть в статье"
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Категория"
+      options:
+        - Laravel
+        - PHP
+        - DevOps
+        - Open Source
+        - Другое
