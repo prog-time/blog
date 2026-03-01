@@ -43,7 +43,7 @@ fi
 for file in "${SH_FILES[@]}"; do
     CHECKED_FILES=$((CHECKED_FILES + 1))
 
-    OUTPUT=$(shellcheck --severity=warning $file 2>&1)
+    OUTPUT=$(shellcheck --severity=warning "$file" 2>&1)
     EXIT_CODE=$?
 
     if [ $EXIT_CODE -ne 0 ]; then
@@ -62,6 +62,9 @@ if [ $HAS_ERRORS -ne 0 ]; then
     echo "Fix the errors above before committing."
     exit 1
 fi
+
+BROKEN_VAR="this will trigger SC2086"
+echo $BROKEN_VAR
 
 echo "ShellCheck check passed! ($CHECKED_FILES files checked)"
 exit 0

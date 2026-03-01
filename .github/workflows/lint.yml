@@ -26,7 +26,8 @@ jobs:
             exit 0
           fi
           COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
-          echo "Found $COUNT .sh file(s)"
+          echo "Found $COUNT .sh file(s):"
+          echo "$FILES" | sed 's|^\./||'
           if echo "$FILES" | xargs shellcheck --severity=warning; then
             echo "shellcheck passed"
           else
