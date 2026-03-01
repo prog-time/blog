@@ -62,16 +62,16 @@ jobs:
             exit 1
           fi
 
-          md_files=$(find . -type f -name "*.md" \
+          mapfile -t md_files < <(find . -type f -name "*.md" \
             -not -path "./node_modules/*" \
             -not -path "./_site/*")
 
-          if [ -z "$md_files" ]; then
+          if [ ${#md_files[@]} -eq 0 ]; then
             echo "⚠️ No .md files found. Skipping."
             exit 0
           fi
 
-          for file in $md_files; do
+          for file in "${md_files[@]}"; do
             echo "ℹ️ Checking ${file#./}..."
             markdownlint "$file" || ERROR_FOUND=1
           done
