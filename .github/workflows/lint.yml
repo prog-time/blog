@@ -16,6 +16,9 @@ jobs:
       - name: Run shellcheck
         run: |
           echo "Running shellcheck..."
+          if [ ! -f ".shellcheckrc" ]; then
+            echo "::warning::Config file .shellcheckrc not found, running with default settings"
+          fi
           FILES=$(find . -name "*.sh" \
             -not -path "./_site/*" \
             -not -path "./node_modules/*" \
