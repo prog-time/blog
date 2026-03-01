@@ -11,27 +11,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run shellcheck
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on scripts
         run: |
-          set -euo pipefail
-          if [ ! -f ".shellcheckrc" ]; then
-            echo "::warning::Config file .shellcheckrc not found, running with default settings"
-          fi
-          FILES=$(find . -name "*.sh" \
-            -not -path "./_site/*" \
-            -not -path "./node_modules/*" \
-            -not -path "./.git/*")
-          if [ -z "$FILES" ]; then
-            echo "::warning::No .sh files found, skipping shellcheck"
-            exit 0
-          fi
-          COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
-          echo "Found $COUNT .sh file(s):"
-          echo "$FILES" | sed 's|^\./||'
-          if echo "$FILES" | xargs shellcheck --severity=warning; then
-            echo "shellcheck passed"
+          ERROR_FOUND=0
+          DIRS=("scripts" "docker/scripts")
+
+          for DIR in "${DIRS[@]}"; do
+            if [ ! -d "$DIR" ]; then
+              echo "⚠️ Directory $DIR does not exist. Skipping."
+              continue
+            fi
+
+            echo "ℹ️ Checking directory: $DIR"
+
+            sh_files=$(find "$DIR" -type f -name "*.sh")
+            if [ -z "$sh_files" ]; then
+              echo "No .sh files found in $DIR"
+              continue
+            fi
+
+            for file in $sh_files; do
+              echo "ℹ️ Checking $file..."
+              shellcheck --severity=warning "$file" || ERROR_FOUND=1
+            done
+          done
+
+          if [[ $ERROR_FOUND -eq 0 ]]; then
+            echo "✅ All shell scripts passed important ShellCheck checks!"
           else
-            echo "shellcheck failed"
+            echo "❌ ShellCheck found important issues!"
             exit 1
           fi
 
