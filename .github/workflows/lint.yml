@@ -21,7 +21,7 @@ jobs:
             -not -path "./node_modules/*" \
             -not -path "./.git/*")
           if [ -z "$FILES" ]; then
-            echo "No .sh files found, skipping"
+            echo "::warning::No .sh files found, skipping shellcheck"
             exit 0
           fi
           if echo "$FILES" | xargs shellcheck --severity=warning; then
@@ -40,6 +40,17 @@ jobs:
       - name: Run markdownlint
         run: |
           echo "Running markdownlint..."
+          if [ ! -f ".markdownlint.yml" ]; then
+            echo "::error::Config file .markdownlint.yml not found"
+            exit 1
+          fi
+          FILES=$(find . -name "*.md" \
+            -not -path "./node_modules/*" \
+            -not -path "./_site/*")
+          if [ -z "$FILES" ]; then
+            echo "::warning::No .md files found, skipping markdownlint"
+            exit 0
+          fi
           if markdownlint "**/*.md" --ignore node_modules --ignore _site; then
             echo "markdownlint passed"
           else
@@ -56,12 +67,16 @@ jobs:
       - name: Run yamllint
         run: |
           echo "Running yamllint..."
+          if [ ! -f ".yamllint.yml" ]; then
+            echo "::error::Config file .yamllint.yml not found"
+            exit 1
+          fi
           FILES=$(find . -type f \( -name "*.yml" -o -name "*.yaml" \) \
             -not -path "./_site/*" \
             -not -path "./node_modules/*" \
             -not -path "./.git/*")
           if [ -z "$FILES" ]; then
-            echo "No YAML files found, skipping"
+            echo "::warning::No YAML files found, skipping yamllint"
             exit 0
           fi
           if echo "$FILES" | xargs yamllint; then
@@ -80,11 +95,15 @@ jobs:
       - name: Run htmlhint
         run: |
           echo "Running htmlhint..."
+          if [ ! -f ".htmlhintrc" ]; then
+            echo "::error::Config file .htmlhintrc not found"
+            exit 1
+          fi
           FILES=$(find . -name "*.html" \
             -not -path "./_site/*" \
             -not -path "./node_modules/*")
           if [ -z "$FILES" ]; then
-            echo "No .html files found, skipping"
+            echo "::warning::No .html files found, skipping htmlhint"
             exit 0
           fi
           if echo "$FILES" | xargs npx htmlhint; then
@@ -103,6 +122,17 @@ jobs:
       - name: Run stylelint
         run: |
           echo "Running stylelint..."
+          if [ ! -f ".stylelintrc.json" ]; then
+            echo "::error::Config file .stylelintrc.json not found"
+            exit 1
+          fi
+          FILES=$(find . \( -name "*.css" -o -name "*.scss" -o -name "*.less" \) \
+            -not -path "./_site/*" \
+            -not -path "./node_modules/*")
+          if [ -z "$FILES" ]; then
+            echo "::warning::No CSS/SCSS/LESS files found, skipping stylelint"
+            exit 0
+          fi
           if npx stylelint "**/*.{css,scss,less}" \
             --ignore-pattern "_site/**" \
             --ignore-pattern "node_modules/**"; then
