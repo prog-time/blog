@@ -43,7 +43,7 @@ fi
 for file in "${SH_FILES[@]}"; do
     CHECKED_FILES=$((CHECKED_FILES + 1))
 
-    OUTPUT=$(shellcheck --severity=warning "$file" 2>&1)
+    OUTPUT=$(shellcheck --severity=warning $file 2>&1)
     EXIT_CODE=$?
 
     if [ $EXIT_CODE -ne 0 ]; then
