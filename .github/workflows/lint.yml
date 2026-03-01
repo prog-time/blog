@@ -106,7 +106,10 @@ jobs:
             echo "::warning::No .html files found, skipping htmlhint"
             exit 0
           fi
-          if echo "$FILES" | xargs npx htmlhint; then
+          output=$(echo "$FILES" | xargs npx htmlhint 2>&1)
+          exit_code=$?
+          echo "$output" | grep -v "^Config loaded:"
+          if [ $exit_code -eq 0 ]; then
             echo "htmlhint passed"
           else
             echo "htmlhint failed"
