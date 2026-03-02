@@ -91,25 +91,32 @@ jobs:
         run: pip install yamllint
       - name: Run yamllint
         run: |
-          set -euo pipefail
+          ERROR_FOUND=0
+
           if [ ! -f ".yamllint.yml" ]; then
             echo "::error::Config file .yamllint.yml not found"
             exit 1
           fi
-          FILES=$(find . -type f \( -name "*.yml" -o -name "*.yaml" \) \
+
+          mapfile -t yaml_files < <(find . -type f \( -name "*.yml" -o -name "*.yaml" \) \
             -not -path "./_site/*" \
             -not -path "./node_modules/*" \
             -not -path "./.git/*")
-          if [ -z "$FILES" ]; then
-            echo "::warning::No YAML files found, skipping yamllint"
+
+          if [ ${#yaml_files[@]} -eq 0 ]; then
+            echo "⚠️ No YAML files found. Skipping."
             exit 0
           fi
-          COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
-          echo "Found $COUNT YAML file(s)"
-          if echo "$FILES" | xargs yamllint; then
-            echo "yamllint passed"
+
+          for file in "${yaml_files[@]}"; do
+            echo "ℹ️ Checking ${file#./}..."
+            yamllint "$file" || ERROR_FOUND=1
+          done
+
+          if [[ $ERROR_FOUND -eq 0 ]]; then
+            echo "✅ All YAML files passed yamllint checks!"
           else
-            echo "yamllint failed"
+            echo "❌ yamllint found issues!"
             exit 1
           fi
 
@@ -121,26 +128,32 @@ jobs:
         run: npm ci
       - name: Run htmlhint
         run: |
-          set -euo pipefail
+          ERROR_FOUND=0
+
           if [ ! -f ".htmlhintrc" ]; then
             echo "::error::Config file .htmlhintrc not found"
             exit 1
           fi
-          FILES=$(find . -name "*.html" \
+
+          mapfile -t html_files < <(find . -type f -name "*.html" \
             -not -path "./_site/*" \
             -not -path "./node_modules/*")
-          if [ -z "$FILES" ]; then
-            echo "::warning::No .html files found, skipping htmlhint"
+
+          if [ ${#html_files[@]} -eq 0 ]; then
+            echo "⚠️ No .html files found. Skipping."
             exit 0
           fi
-          COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
-          echo "Found $COUNT .html file(s)"
-          output=$(echo "$FILES" | xargs npx htmlhint 2>&1) || exit_code=$?
-          echo "$output" | grep -v "^Config loaded:"
-          if [ "${exit_code:-0}" -eq 0 ]; then
-            echo "htmlhint passed"
+
+          for file in "${html_files[@]}"; do
+            echo "ℹ️ Checking ${file#./}..."
+            output=$(npx htmlhint "$file" 2>&1) || ERROR_FOUND=1
+            echo "$output" | grep -v "^Config loaded:"
+          done
+
+          if [[ $ERROR_FOUND -eq 0 ]]; then
+            echo "✅ All HTML files passed htmlhint checks!"
           else
-            echo "htmlhint failed"
+            echo "❌ htmlhint found issues!"
             exit 1
           fi
 
@@ -152,25 +165,30 @@ jobs:
         run: npm ci
       - name: Run stylelint
         run: |
-          set -euo pipefail
+          ERROR_FOUND=0
+
           if [ ! -f ".stylelintrc.json" ]; then
             echo "::error::Config file .stylelintrc.json not found"
             exit 1
           fi
-          FILES=$(find . \( -name "*.css" -o -name "*.scss" -o -name "*.less" \) \
+
+          mapfile -t css_files < <(find . -type f \( -name "*.css" -o -name "*.scss" -o -name "*.less" \) \
             -not -path "./_site/*" \
             -not -path "./node_modules/*")
-          if [ -z "$FILES" ]; then
-            echo "::warning::No CSS/SCSS/LESS files found, skipping stylelint"
+
+          if [ ${#css_files[@]} -eq 0 ]; then
+            echo "⚠️ No CSS/SCSS/LESS files found. Skipping."
             exit 0
           fi
-          COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
-          echo "Found $COUNT CSS/SCSS/LESS file(s)"
-          if npx stylelint "**/*.{css,scss,less}" \
-            --ignore-pattern "_site/**" \
-            --ignore-pattern "node_modules/**"; then
-            echo "stylelint passed"
+
+          for file in "${css_files[@]}"; do
+            echo "ℹ️ Checking ${file#./}..."
+            npx stylelint "$file" || ERROR_FOUND=1
+          done
+
+          if [[ $ERROR_FOUND -eq 0 ]]; then
+            echo "✅ All CSS/SCSS/LESS files passed stylelint checks!"
           else
-            echo "stylelint failed"
+            echo "❌ stylelint found issues!"
             exit 1
           fi
