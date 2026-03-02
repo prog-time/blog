@@ -147,7 +147,7 @@ jobs:
           for file in "${html_files[@]}"; do
             echo "ℹ️ Checking ${file#./}..."
             output=$(npx htmlhint "$file" 2>&1) || ERROR_FOUND=1
-            echo "$output" | grep -v "^Config loaded:"
+            echo "$output" | grep -v "Config loaded:" | grep -v "Scanned [0-9]* files, no errors found"
           done
 
           if [[ $ERROR_FOUND -eq 0 ]]; then
