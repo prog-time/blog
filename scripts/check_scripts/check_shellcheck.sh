@@ -66,5 +66,8 @@ fi
 BROKEN_VAR="this will trigger SC2086"
 echo $BROKEN_VAR
 
+TEST_VAR="shellcheck test"
+echo $TEST_VAR
+
 echo "ShellCheck check passed! ($CHECKED_FILES files checked)"
 exit 0
