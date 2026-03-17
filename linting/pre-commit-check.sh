@@ -18,21 +18,21 @@ done < <(git diff --cached --name-only --diff-filter=A || true)
 #done
 
 echo "ShellCheck..."
-bash scripts/check_scripts/check_shellcheck.sh "${ALL_FILE_ARRAY[@]}"
+bash linting/check_scripts/check_shellcheck.sh "${ALL_FILE_ARRAY[@]}"
 echo "----------"
 
 echo "Markdown Code Style Checker..."
-bash scripts/check_scripts/check_markdownlint.sh "${ALL_FILE_ARRAY[@]}"
+bash linting/check_scripts/check_markdownlint.sh "${ALL_FILE_ARRAY[@]}"
 echo "----------"
 
 echo "YML/YAML Checker..."
-bash scripts/check_scripts/check_yamllint.sh "${ALL_FILE_ARRAY[@]}"
+bash linting/check_scripts/check_yamllint.sh "${ALL_FILE_ARRAY[@]}"
 echo "----------"
 
 echo "HTML Code Checker..."
-bash scripts/check_scripts/check_htmlhint.sh "${ALL_FILE_ARRAY[@]}"
+bash linting/check_scripts/check_htmlhint.sh "${ALL_FILE_ARRAY[@]}"
 echo "----------"
 
 echo "CSS Code Style Checker..."
-bash scripts/check_scripts/check_stylelint.sh "${ALL_FILE_ARRAY[@]}"
+bash linting/check_scripts/check_stylelint.sh "${ALL_FILE_ARRAY[@]}"
 echo "----------"
