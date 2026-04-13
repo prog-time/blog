@@ -5,7 +5,7 @@ description: "Git Hooks Collection"
 tags: ["Open Source", "git", "shell", "bash"]
 technologies: ["git", "shell", "bash", "eslint", "prettier", "pytest", "flake8", "shell-script", "bash-script", "phpstan", "pint"]
 github: "https://github.com/prog-time/git-hooks"
-stars: 17
+stars: 22
 forks: 2
 status: active
 ---
