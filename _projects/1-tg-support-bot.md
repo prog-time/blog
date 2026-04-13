@@ -1,19 +1,19 @@
 ---
 layout: project
 title: "tg-support-bot"
-description: "Бот технической поддержки в Telegram и ВКонтакте"
+description: "Бот технической поддержки в Telegram, ВКонтакте и Max"
 tags: ["Open Source", "PHP", "Laravel", "Redis", "PostgreSQL", "Docker", "Node.js + Socket.io",]
-technologies: ["PHP", "Laravel", "Redis", "PostgreSQL", "JavaScript", "Docker + Docker Compose", "Node.js + Socket.io",  "Telegram API", "VK API", "OpenAI API"]
+technologies: ["PHP", "Laravel", "Redis", "PostgreSQL", "JavaScript", "Docker + Docker Compose", "Node.js + Socket.io",  "Telegram API", "VK API", "Max API", "OpenAI API"]
 github: "https://github.com/prog-time/tg-support-bot"
 demo: "https://tg-support-bot.ru"
-stars: 180
-forks: 39
+stars: 204
+forks: 41
 status: active
 ---
 
 ## О проекте
 
-Телеграм бот для объединения сообщений из Telegram, ВКонтакте и сторонних API источников в единую систему технической поддержки.
+Телеграм бот для объединения сообщений из Telegram, ВКонтакте, Max и сторонних API источников в единую систему технической поддержки.
 
 Сообщения отправляются в Telegram-группу, где под каждого пользователя создаётся отдельная чат-тема (топик).
 
@@ -24,7 +24,7 @@ status: active
 ## Демонстрация
 
 Процесс обработки сообщений:
-1. **Получение сообщения:** Пользователь отправляет сообщение боту через Telegram, ВКонтакте, виджет сайта или внешний API
+1. **Получение сообщения:** Пользователь отправляет сообщение боту через Telegram, ВКонтакте, Max, виджет сайта или внешний API
 2. **Создание топика:** Бот автоматически находит или создаёт тему (топик) в Telegram-группе для этого клиента
 3. **Пересылка в группу:** Сообщение пересылается в соответствующую тему с информацией об отправителе
 4. **Ответ менеджера:** Менеджеры отвечают прямо в теме — бот отслеживает их сообщения
@@ -39,9 +39,14 @@ status: active
 └─────────────┘         │             │         └─────────────────┘
                         │             │
 ┌─────────────┐         │   TG Bot    │         ┌─────────────────┐
-│  Website    │────────▶│   Server    │◀────────│  External API   │
-│   Widget    │         │             │         │    Sources      │
+│    Max      │────────▶│   Server    │◀────────│  External API   │
+│   Users     │         │             │         │    Sources      │
 └─────────────┘         │             │         └─────────────────┘
+                        │             │
+┌─────────────┐         │             │
+│  Website    │────────▶│             │
+│   Widget    │         │             │
+└─────────────┘         │             │
                         └──────┬──────┘
                                │
                                ▼
@@ -72,6 +77,7 @@ status: active
 **External APIs:**
 - Telegram Bot API
 - VK API
+- Max API
 - OpenAI API / DeepSeek / GigaChat (AI)
 
 **DevOps:**
