@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<main class="main">
+  <section class="portfolio-section">
+    <header class="portfolio-header">
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.description -%}
+        <p class="portfolio-description">{{ page.description }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="portfolio-grid">
+      {%- assign sorted_portfolio = site.portfolio | sort: "order" -%}
+      {%- for item in sorted_portfolio -%}
+        {%- include portfolio-card.html item=item -%}
+      {%- endfor -%}
+    </div>
+  </section>
+</main>
