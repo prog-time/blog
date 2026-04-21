@@ -978,6 +978,94 @@ body {
   }
 }
 
+// Portfolio
+.portfolio-section {
+  .portfolio-header {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-description {
+      color: $muted;
+      font-size: 1rem;
+    }
+  }
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 641px) and (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.portfolio-card {
+  border: 1px solid $border;
+  border-radius: $radius;
+  overflow: hidden;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: darken($border, 5%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .portfolio-card-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background-color: $secondary;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      margin: 0;
+      border-radius: 0;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover .portfolio-card-image img {
+    transform: scale(1.02);
+  }
+
+  .portfolio-card-body {
+    padding: 0.75rem 1rem;
+
+    h3 {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: $foreground;
+    }
+  }
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
