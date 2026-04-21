@@ -45,6 +45,9 @@ collections:
   jobs:
     output: true
     permalink: /experience/:name/
+  portfolio:
+    output: true
+    permalink: /portfolio/:name/
 
 header_pages:
   - about.md
