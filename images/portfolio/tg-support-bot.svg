@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <rect width="300" height="400" fill="#f5f5f5"/>
+  <rect x="0" y="0" width="300" height="48" fill="#1a1a1a"/>
+  <rect x="12" y="14" width="120" height="20" rx="4" fill="#3b82f6"/>
+  <rect x="12" y="68" width="276" height="14" rx="3" fill="#e5e5e5"/>
+  <rect x="12" y="90" width="200" height="14" rx="3" fill="#e5e5e5"/>
+  <rect x="12" y="120" width="276" height="120" rx="8" fill="#e5e5e5"/>
+  <rect x="12" y="260" width="130" height="60" rx="8" fill="#e5e5e5"/>
+  <rect x="154" y="260" width="134" height="60" rx="8" fill="#e5e5e5"/>
+  <rect x="12" y="340" width="276" height="14" rx="3" fill="#e5e5e5"/>
+  <text x="150" y="215" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#737373">tg-support-bot.ru</text>
+</svg>
