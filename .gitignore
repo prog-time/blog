@@ -4,3 +4,5 @@ _site/
 .idea/
 vendor/
 node_modules/
+/tasks
+.claude

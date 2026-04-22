@@ -1,0 +1,14 @@
+<article class="portfolio-card">
+  <a href="{{ item.url | relative_url }}">
+    <div class="portfolio-card-image">
+      <img
+        src="{{ item.image | relative_url }}"
+        alt="{{ item.title | escape }}"
+        loading="lazy"
+      >
+    </div>
+    <div class="portfolio-card-body">
+      <h3>{{ item.title | escape }}</h3>
+    </div>
+  </a>
+</article>
