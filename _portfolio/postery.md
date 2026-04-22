@@ -7,7 +7,6 @@ full_image: /images/portfolio/postery.png
 external_url: "https://github.com/prog-time/postery"
 technologies: ["Python", "FastAPI", "Telegram API", "VK API", "Max API"]
 order: 5
-# ❓ Будущие поля: year, client
 ---
 
 ## Описание

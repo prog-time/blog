@@ -7,7 +7,6 @@ full_image: /images/portfolio/lyashchuk-pro.png
 external_url: "https://lyashchuk.pro"
 technologies: ["Jekyll", "Ruby", "Liquid", "SCSS", "Markdown"]
 order: 2
-# ❓ Будущие поля: year, client
 ---
 
 ## Описание

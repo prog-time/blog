@@ -7,7 +7,6 @@ full_image: /images/portfolio/tg-support-bot.png
 external_url: "https://tg-support-bot.ru"
 technologies: ["PHP", "HTML", "CSS", "JavaScript", "Telegram API", "VK API", "Max API"]
 order: 1
-# ❓ Будущие поля: year, client
 ---
 
 ## Описание

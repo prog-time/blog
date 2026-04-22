@@ -7,7 +7,6 @@ full_image: /images/portfolio/grex-parser.png
 external_url: "https://grex-parser.ru/"
 technologies: ["WordPress", "HTML", "CSS", "JavaScript"]
 order: 3
-# ❓ Будущие поля: year, client. Технологии — для лендинга; стек парсера уточнить.
 ---
 
 ## Описание

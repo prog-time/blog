@@ -7,7 +7,6 @@ full_image: /images/portfolio/1remontex.png
 external_url: "https://1remontex.ru/"
 technologies: ["WordPress", "PHP", "HTML", "CSS", "JavaScript"]
 order: 4
-# ❓ Будущие поля: year, client
 ---
 
 ## Описание
