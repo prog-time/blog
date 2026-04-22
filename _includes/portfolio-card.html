@@ -1,5 +1,5 @@
 <article class="portfolio-card">
-  <a href="{{ item.url | escape }}" target="_blank" rel="noopener">
+  <a href="{{ item.url | relative_url }}">
     <div class="portfolio-card-image">
       <img
         src="{{ item.image | relative_url }}"

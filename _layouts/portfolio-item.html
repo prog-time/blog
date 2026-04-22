@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<main class="main">
+  <article class="portfolio-detail">
+    <div class="portfolio-detail-image">
+      {%- assign detail_image = page.full_image | default: page.image -%}
+      <img
+        src="{{ detail_image | relative_url }}"
+        alt="{{ page.title | escape }}"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="portfolio-detail-body">
+      <header class="portfolio-detail-header">
+        <h1>{{ page.title | escape }}</h1>
+        {%- if page.description -%}
+          <p class="portfolio-detail-description">{{ page.description }}</p>
+        {%- endif -%}
+      </header>
+
+      {%- if page.technologies.size > 0 -%}
+        <div class="portfolio-detail-meta">
+          {%- for item in page.technologies -%}
+            <span class="tag">{{ item }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if content and content != "" -%}
+        <div class="portfolio-detail-content">
+          {{ content }}
+        </div>
+      {%- endif -%}
+
+      {%- if page.external_url -%}
+        <div class="portfolio-detail-actions">
+          <a href="{{ page.external_url }}" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Открыть сайт
+          </a>
+        </div>
+      {%- endif -%}
+
+      <footer class="portfolio-detail-footer">
+        <a href="/portfolio/" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Все работы
+        </a>
+      </footer>
+    </div>
+  </article>
+</main>
