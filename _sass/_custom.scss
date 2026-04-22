@@ -1066,6 +1066,159 @@ body {
   }
 }
 
+.portfolio-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.portfolio-detail-image {
+  border: 1px solid $border;
+  border-radius: $radius;
+  overflow: hidden;
+  background-color: $secondary;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+.portfolio-detail-body {
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 900px) {
+    position: static;
+    top: auto;
+  }
+}
+
+.portfolio-detail-header {
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+  }
+
+  .portfolio-detail-description {
+    color: $muted;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.portfolio-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: $accent;
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+}
+
+.portfolio-detail-content {
+  color: $foreground;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.375rem;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    padding: 0.1em 0.35em;
+    background-color: $secondary;
+    border-radius: 3px;
+  }
+}
+
+.portfolio-detail-actions {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 1.125rem;
+    border-radius: $radius;
+    transition: all 0.2s ease;
+
+    &.btn-primary {
+      color: #fff;
+      background-color: $foreground;
+
+      &:hover {
+        background-color: lighten($foreground, 15%);
+      }
+    }
+  }
+}
+
+.portfolio-detail-footer {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $border;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
