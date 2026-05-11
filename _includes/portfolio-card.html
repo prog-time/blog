@@ -9,6 +9,13 @@
     </div>
     <div class="portfolio-card-body">
       <h3>{{ item.title | escape }}</h3>
+      {%- if item.technologies.size > 0 -%}
+        <div class="portfolio-card-tags">
+          {%- for tech in item.technologies -%}
+            <span class="tag">{{ tech }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
   </a>
 </article>
