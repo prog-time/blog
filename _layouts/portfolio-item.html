@@ -5,12 +5,16 @@ layout: default
 <main class="main">
   <article class="portfolio-detail">
     <div class="portfolio-detail-image">
-      {%- assign detail_image = page.full_image | default: page.image -%}
-      <img
-        src="{{ detail_image | relative_url }}"
-        alt="{{ page.title | escape }}"
-        loading="lazy"
-      >
+      {%- assign detail_image_raw = page.full_image | default: page.image -%}
+      {%- assign detail_images = detail_image_raw | split: "," -%}
+      {%- for src in detail_images -%}
+        {%- assign src_trim = src | strip -%}
+        <img
+          src="{{ src_trim | relative_url }}"
+          alt="{{ page.title | escape }}"
+          loading="lazy"
+        >
+      {%- endfor -%}
     </div>
 
     <div class="portfolio-detail-body">
@@ -55,3 +59,30 @@ layout: default
     </div>
   </article>
 </main>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="#" alt="">
+</div>
+
+<script>
+  (function () {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.portfolio-detail-image img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', function () {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  })();
+</script>

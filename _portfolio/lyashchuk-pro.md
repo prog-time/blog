@@ -1,9 +1,9 @@
 ---
 layout: portfolio-item
-title: "lyashchuk.pro"
+title: "Сайт lyashchuk.pro"
 description: "Личный блог и сайт-визитка: статьи о Laravel, PHP, DevOps и open source."
-image: /images/portfolio/lyashchuk-pro.png
-full_image: /images/portfolio/lyashchuk-pro.png
+image: "/images/portfolio/lyashchuk-pro.png"
+full_image: "/images/portfolio/lyashchuk-pro.png"
 external_url: "https://lyashchuk.pro"
 technologies: ["Jekyll", "Ruby", "Liquid", "SCSS", "Markdown"]
 order: 2
