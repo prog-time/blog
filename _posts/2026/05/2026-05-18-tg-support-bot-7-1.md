@@ -3,8 +3,8 @@ layout: post
 title: "AI-помощник для технической поддержки: новый этап в TG Support Bot 7.1.0"
 date: 2026-05-18
 categories: ["tg-support-bot", "open source"]
-description: "Как организовать хранение скилов, агентов, команд, хуков и MCP-конфигураций Claude Code в Git-репозитории и подключать их через симлинки — с линтерами, make install и переносом на новую машину за три команды."
-keywords: "claude-code, claude-config-template, скилы, агенты, симлинки, git, конфигурация, open source, make install, линтеры, MCP"
+description: "Релиз TG Support Bot 7.1.0: AI-помощник для технической поддержки в Telegram, ВКонтакте и Max — режимы черновика и автоответа, поддержка OpenAI, DeepSeek и GigaChat, контекстный бюджет диалога и настройка через system prompt."
+keywords: "tg-support-bot, AI помощник, техническая поддержка, Telegram, ВКонтакте, Max, OpenAI, DeepSeek, GigaChat, system prompt, open source, self-hosted, Docker"
 ---
 
 Всем привет! Я продолжаю развивать TG Support Bot как open-source решение для поддержки клиентов в мессенджерах и в этом релизе хочу поделиться обновлением 7.1.0.
