@@ -6,8 +6,8 @@ tags: ["Open Source", "PHP", "Laravel", "Redis", "PostgreSQL", "Docker", "Node.j
 technologies: ["PHP", "Laravel", "Redis", "PostgreSQL", "JavaScript", "Docker + Docker Compose", "Node.js + Socket.io",  "Telegram API", "VK API", "Max API", "OpenAI API"]
 github: "https://github.com/prog-time/tg-support-bot"
 demo: "https://tg-support-bot.ru"
-stars: 211
-forks: 43
+stars: 251
+forks: 49
 status: active
 ---
 

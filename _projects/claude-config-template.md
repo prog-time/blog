@@ -5,8 +5,8 @@ description: "Шаблон-репозиторий для хранения кон
 tags: ["Open Source", "Claude Code", "Shell", "Make", "Python"]
 technologies: ["Claude Code", "Shell", "Bash", "Make", "Python", "GitHub Actions", "Markdown", "YAML"]
 github: "https://github.com/prog-time/claude-config-template"
-stars: 4
-forks: 0
+stars: 17
+forks: 1
 status: active
 ---
 

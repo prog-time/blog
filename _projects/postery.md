@@ -5,7 +5,7 @@ description: "Инструмент для автоматизации публи�
 tags: ["Open Source", "Python", "FastAPI", "AI"]
 technologies: ["Python", "FastAPI", "OpenAI API", "GigaChat"]
 github: "https://github.com/prog-time/postery"
-stars: 7
+stars: 8
 forks: 1
 status: active
 ---
