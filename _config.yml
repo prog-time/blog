@@ -48,6 +48,14 @@ collections:
   portfolio:
     output: true
     permalink: /portfolio/:name/
+  arduino:
+    output: true
+    permalink: /arduino/:name/
+    sort_by: number
+
+exclude:
+  - templates/
+  - arduino-inventory.md
 
 header_pages:
   - about.md
@@ -57,3 +65,8 @@ defaults:
       path: ""
     values:
       image: /assets/images/og-default.png
+  - scope:
+      path: ""
+      type: arduino
+    values:
+      layout: arduino-entry
