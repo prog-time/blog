@@ -1,0 +1,134 @@
+---
+layout: default
+---
+
+<main class="main">
+  <article class="article arduino-entry">
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="tag">Arduino{% if page.number > 0 %} · #{{ page.number | prepend: "0" | slice: -2, 2 }}{% endif %}</span>
+        {%- assign date_format = site.minima.date_format | default: "%-d %B %Y" -%}
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: date_format }}</time>
+      </div>
+      <h1>{{ page.title | escape }}</h1>
+      <div class="article-views">
+        <img src="https://hitscounter.dev/api/hit?url={{ page.url | prepend: site.url | url_encode }}&label=Просмотров&color=%23737373" alt="views">
+      </div>
+    </header>
+
+    {%- if page.difficulty or page.time_spent != blank or page.cost != blank or page.components.size > 0 or page.skills.size > 0 -%}
+    <div class="arduino-passport">
+      {%- if page.difficulty -%}
+      <div class="arduino-passport-item">
+        <span class="arduino-passport-label">Сложность</span>
+        <span class="arduino-difficulty" title="{{ page.difficulty }} из 5">
+          {%- for i in (1..5) -%}
+            <span class="arduino-difficulty-dot{% if i <= page.difficulty %} is-active{% endif %}"></span>
+          {%- endfor -%}
+        </span>
+      </div>
+      {%- endif -%}
+      {%- if page.time_spent and page.time_spent != "" -%}
+      <div class="arduino-passport-item">
+        <span class="arduino-passport-label">Время</span>
+        <span class="arduino-passport-value">{{ page.time_spent }}</span>
+      </div>
+      {%- endif -%}
+      {%- if page.cost and page.cost != "" -%}
+      <div class="arduino-passport-item">
+        <span class="arduino-passport-label">Стоимость</span>
+        <span class="arduino-passport-value">{{ page.cost }}</span>
+      </div>
+      {%- endif -%}
+      {%- if page.components.size > 0 -%}
+      <div class="arduino-passport-item arduino-passport-item--wide">
+        <span class="arduino-passport-label">Компоненты</span>
+        <div class="tags-list">
+          {%- for component in page.components -%}
+            <span class="tag">{{ component }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if page.skills.size > 0 -%}
+      <div class="arduino-passport-item arduino-passport-item--wide">
+        <span class="arduino-passport-label">Навыки</span>
+        <div class="tags-list">
+          {%- for skill in page.skills -%}
+            <span class="tag tag--accent">{{ skill }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+
+    <div class="article-content">
+      {{ content }}
+
+      {%- if page.wokwi_id and page.wokwi_id != "" -%}
+      <h2 id="wokwi">Попробовать в симуляторе</h2>
+      <div class="arduino-wokwi">
+        <iframe src="https://wokwi.com/projects/{{ page.wokwi_id }}/embed" title="Симуляция проекта в Wokwi" loading="lazy" allowfullscreen></iframe>
+      </div>
+      {%- endif -%}
+
+      {%- if page.repo_url and page.repo_url != "" -%}
+      <p class="arduino-repo">Полный код проекта: <a href="{{ page.repo_url }}" target="_blank" rel="noopener">{{ page.repo_url }}</a></p>
+      {%- endif -%}
+    </div>
+
+    {%- if page.previous or page.next -%}
+    <nav class="arduino-pager">
+      {%- if page.previous -%}
+        <a href="{{ page.previous.url | relative_url }}" class="arduino-pager-link arduino-pager-link--prev">
+          <span class="arduino-pager-label">Предыдущая запись</span>
+          <span class="arduino-pager-title">{{ page.previous.title | escape }}</span>
+        </a>
+      {%- endif -%}
+      {%- if page.next -%}
+        <a href="{{ page.next.url | relative_url }}" class="arduino-pager-link arduino-pager-link--next">
+          <span class="arduino-pager-label">Следующая запись</span>
+          <span class="arduino-pager-title">{{ page.next.title | escape }}</span>
+        </a>
+      {%- endif -%}
+    </nav>
+    {%- endif -%}
+
+    <footer class="article-footer">
+      <a href="/arduino/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Все записи об Arduino
+      </a>
+    </footer>
+  </article>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="#" alt="">
+</div>
+
+<script>
+  (function () {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.article-content img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', function () {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  })();
+</script>

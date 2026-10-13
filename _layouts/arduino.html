@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+{%- assign entries = site.arduino | sort: "number" -%}
+{%- assign projects = entries | where_exp: "item", "item.number > 0" -%}
+{%- assign skills = "" | split: "" -%}
+{%- for entry in projects -%}
+  {%- assign skills = skills | concat: entry.skills -%}
+{%- endfor -%}
+{%- assign skills = skills | compact | uniq -%}
+
+<main class="main">
+  <section class="arduino-section">
+    <header class="arduino-header">
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.description -%}
+        <p class="arduino-description">{{ page.description }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="arduino-stats">
+      <div class="arduino-stat">
+        <span class="arduino-stat-value">{{ projects.size }}</span>
+        <span class="arduino-stat-label">мини-проектов</span>
+      </div>
+      <div class="arduino-stat">
+        <span class="arduino-stat-value">{{ skills.size }}</span>
+        <span class="arduino-stat-label">навыков освоено</span>
+      </div>
+      <div class="arduino-stat">
+        <span class="arduino-stat-value">{{ entries.size }}</span>
+        <span class="arduino-stat-label">записей в дневнике</span>
+      </div>
+    </div>
+
+    {%- if skills.size > 0 -%}
+    <div class="arduino-skills">
+      {%- for skill in skills -%}
+        <span class="tag">{{ skill }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    <div class="arduino-list">
+      {%- for entry in entries -%}
+      <article class="arduino-card">
+        <a href="{{ entry.url | relative_url }}">
+          <span class="arduino-card-number">
+            {%- if entry.number > 0 -%}#{{ entry.number | prepend: "0" | slice: -2, 2 }}{%- else -%}intro{%- endif -%}
+          </span>
+          <div class="arduino-card-body">
+            <div class="first-row">
+              <h3>{{ entry.title | escape }}</h3>
+              {%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
+              <time datetime="{{ entry.date | date: '%Y-%m-%d' }}">{{ entry.date | date: date_format }}</time>
+            </div>
+            {%- if entry.description -%}
+              <p>{{ entry.description }}</p>
+            {%- endif -%}
+            {%- if entry.skills.size > 0 -%}
+            <div class="tags-list">
+              {%- for skill in entry.skills -%}
+                <span class="tag">{{ skill }}</span>
+              {%- endfor -%}
+            </div>
+            {%- endif -%}
+          </div>
+        </a>
+      </article>
+      {%- endfor -%}
+    </div>
+  </section>
+</main>
