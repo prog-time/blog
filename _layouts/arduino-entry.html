@@ -69,7 +69,7 @@ layout: default
       {%- if page.wokwi_id and page.wokwi_id != "" -%}
       <h2 id="wokwi">Попробовать в симуляторе</h2>
       <div class="arduino-wokwi">
-        <iframe src="https://wokwi.com/projects/{{ page.wokwi_id }}/embed" title="Симуляция проекта в Wokwi" loading="lazy" allowfullscreen></iframe>
+        <iframe src="https://wokwi.com/projects/{{ page.wokwi_id }}/embed?view=diagram" title="Симуляция проекта в Wokwi" loading="lazy" allowfullscreen></iframe>
       </div>
       {%- endif -%}
 
