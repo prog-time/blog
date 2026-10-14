@@ -7,6 +7,7 @@ keywords: "arduino, светофор arduino, светодиоды, digitalWrite
 difficulty: 1
 skills: ["GPIO", "digitalWrite", "delay", "функции", "цикл for"]
 components: ["Arduino Uno", "светодиоды: красный, жёлтый, зелёный", "3 резистора 220 Ом", "макетная плата", "провода"]
+wokwi_id: "477894664176203777"
 # time_spent: "…"   — сколько времени ушло
 # cost: "…"         — сколько стоили детали
 ---
