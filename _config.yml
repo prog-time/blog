@@ -3,10 +3,12 @@ description: "Блог программиста Ильи Лящук — стат
 baseurl: ""
 url: "https://lyashchuk.pro"
 lang: ru_RU
+timezone: Europe/Moscow
 
 author:
   name: "Илья Лящук"
   url: "https://lyashchuk.pro/about/"
+  twitter: prog_time
 
 contact:
   github_username: "prog-time"
@@ -32,6 +34,7 @@ theme: minima
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 show_excerpts: true
 

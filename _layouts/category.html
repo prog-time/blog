@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<main class="main">
+  <section class="articles">
+    <h2>Статьи в категории «{{ page.category }}»</h2>
+    {%- if page.description -%}
+    <p class="category-intro">{{ page.description }}</p>
+    {%- endif -%}
+    <div class="article-list">
+      {%- for post in site.categories[page.category] -%}
+      {%- include post-card.html post=post -%}
+      {%- endfor -%}
+    </div>
+  </section>
+</main>

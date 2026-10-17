@@ -7,14 +7,15 @@ layout: default
     <header class="article-header">
       <div class="article-meta">
         {%- for category in page.categories -%}
-          <span class="tag">{{ category }}</span>
+          {%- assign category_slug = category | slugify -%}
+          <a class="tag" href="{{ '/category/' | append: category_slug | append: '/' | relative_url }}">{{ category }}</a>
         {%- endfor -%}
         {%- assign date_format = site.minima.date_format | default: "%-d %B %Y" -%}
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: date_format }}</time>
       </div>
       <h1>{{ page.title | escape }}</h1>
       <div class="article-views">
-        <img src="https://hitscounter.dev/api/hit?url={{ page.url | prepend: site.url | url_encode }}&label=Просмотров&color=%23737373" alt="views">
+        <img src="https://hitscounter.dev/api/hit?url={{ page.url | prepend: site.url | url_encode }}&label=Просмотров&color=%23737373" alt="">
       </div>
     </header>
 
@@ -32,6 +33,32 @@ layout: default
     <div class="article-content">
       {{ content }}
     </div>
+
+    {%- assign related_urls = "" -%}
+    {%- assign related_count = 0 -%}
+    {%- capture related_items -%}
+      {%- for category in page.categories -%}
+        {%- for post in site.categories[category] -%}
+          {%- if related_count >= 3 -%}{%- break -%}{%- endif -%}
+          {%- if post.url == page.url -%}{%- continue -%}{%- endif -%}
+          {%- assign url_marker = post.url | prepend: "|" | append: "|" -%}
+          {%- if related_urls contains url_marker -%}{%- continue -%}{%- endif -%}
+          {%- assign related_urls = related_urls | append: url_marker -%}
+          {%- assign related_count = related_count | plus: 1 -%}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d.%m.%Y" }}</time>
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- if related_count > 0 -%}
+    <aside class="article-related">
+      <h2>Читайте также</h2>
+      <ul>{{ related_items }}</ul>
+    </aside>
+    {%- endif -%}
 
     <footer class="article-footer">
       {%- if page.tags.size > 0 -%}
@@ -52,7 +79,7 @@ layout: default
 </main>
 
 <div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="#" alt="">
+  <img id="lightbox-img" alt="">
 </div>
 
 <script>
