@@ -9,25 +9,7 @@ layout: default
     <h2>Последние статьи</h2>
     <div class="article-list">
       {%- for post in site.posts -%}
-      <article class="article-card">
-        <a href="{{ post.url | relative_url }}">
-          <div class="first-row">
-            <h3>{{ post.title | escape }}</h3>
-            {%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
-            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: date_format }}</time>
-          </div>
-          {%- if post.excerpt -%}
-            <p>{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-          {%- endif -%}
-          {%- if post.categories.size > 0 -%}
-          <div class="tags-list">
-            {%- for category in post.categories -%}
-              <span class="tag">{{ category }}</span>
-            {%- endfor -%}
-          </div>
-          {%- endif -%}
-        </a>
-      </article>
+      {%- include post-card.html post=post -%}
       {%- endfor -%}
     </div>
   </section>

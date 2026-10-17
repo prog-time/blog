@@ -1,0 +1,19 @@
+<article class="article-card">
+  <a href="{{ include.post.url | relative_url }}">
+    <div class="first-row">
+      <h3>{{ include.post.title | escape }}</h3>
+      {%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
+      <time datetime="{{ include.post.date | date: '%Y-%m-%d' }}">{{ include.post.date | date: date_format }}</time>
+    </div>
+    {%- if include.post.excerpt -%}
+      <p>{{ include.post.excerpt | strip_html | truncatewords: 25 }}</p>
+    {%- endif -%}
+    {%- if include.post.categories.size > 0 -%}
+    <div class="tags-list">
+      {%- for category in include.post.categories -%}
+        <span class="tag">{{ category }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </a>
+</article>
