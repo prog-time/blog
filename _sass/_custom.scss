@@ -1586,3 +1586,62 @@ body {
     }
   }
 }
+
+// Category links and related posts
+.article .article-header .article-meta a.tag {
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+  }
+}
+
+.article .article-related {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border;
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  a {
+    color: $foreground;
+    text-decoration: none;
+    line-height: 1.4;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  time {
+    font-size: 0.8rem;
+    color: $muted;
+    white-space: nowrap;
+  }
+}
+
+.articles .category-intro {
+  color: $muted;
+  margin-bottom: 1.5rem;
+}
