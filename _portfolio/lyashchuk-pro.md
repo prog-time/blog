@@ -6,6 +6,7 @@ image: "/images/portfolio/lyashchuk-pro.png"
 full_image: "/images/portfolio/lyashchuk-pro.png"
 external_url: "https://lyashchuk.pro"
 technologies: ["Jekyll", "Ruby", "Liquid", "SCSS", "Markdown"]
+tags: ["Сайт", "Блог"]
 order: 2
 ---
 

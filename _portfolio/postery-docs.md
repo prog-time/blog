@@ -6,6 +6,7 @@ image: "/images/portfolio/postery-docs-1.png"
 full_image: "/images/portfolio/postery-docs-1.png,/images/portfolio/postery-docs-2.png"
 external_url: "https://postery.lyashchuk.pro/"
 technologies: ["VitePress", "Vue", "TypeScript", "Markdown", "GitHub Actions"]
+tags: ["Сайт", "Документация", "Open Source"]
 order: 6
 ---
 

@@ -6,6 +6,7 @@ image: "/images/portfolio/grex-parser-1.png"
 full_image: "/images/portfolio/grex-parser-1.png,/images/portfolio/grex-parser-2.png"
 external_url: "https://grex-parser.ru/"
 technologies: ["PHP", "WordPress", "HTML", "CSS", "JavaScript"]
+tags: ["Парсер"]
 order: 3
 ---
 
