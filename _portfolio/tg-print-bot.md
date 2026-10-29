@@ -5,6 +5,7 @@ image: "/images/portfolio/tg-print-bot-1.png"
 full_image: "/images/portfolio/tg-print-bot-1.png,/images/portfolio/tg-print-bot-2.png,/images/portfolio/tg-print-bot-3.png"
 external_url: "https://t.me/PrinterDomaBot"
 technologies: ["PHP", "Laravel", "Telegram API"]
+tags: ["Telegram-бот"]
 order: 7
 ---
 

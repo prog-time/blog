@@ -6,6 +6,7 @@ image: "/images/portfolio/tg-support-bot-docs-1.png"
 full_image: "/images/portfolio/tg-support-bot-docs-1.png,/images/portfolio/tg-support-bot-docs-2.png"
 external_url: "https://docs.tg-support-bot.ru/"
 technologies: ["VitePress", "Vue", "TypeScript", "Markdown", "GitHub Actions"]
+tags: ["Документация", "Open Source"]
 order: 6
 ---
 

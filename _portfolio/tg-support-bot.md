@@ -6,6 +6,7 @@ image: "/images/portfolio/tg-support-bot.png"
 full_image: "/images/portfolio/tg-support-bot.png"
 external_url: "https://tg-support-bot.ru"
 technologies: ["PHP", "HTML", "CSS", "JavaScript", "Telegram API", "VK API", "Max API"]
+tags: ["Сайт", "Open Source"]
 order: 1
 ---
 

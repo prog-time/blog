@@ -6,6 +6,7 @@ image: "/images/portfolio/1remontex.png"
 full_image: "/images/portfolio/1remontex.png"
 external_url: "https://1remontex.ru/"
 technologies: ["WordPress", "PHP", "HTML", "CSS", "JavaScript"]
+tags: ["Сайт"]
 order: 4
 ---
 

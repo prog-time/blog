@@ -5,6 +5,7 @@ image: "/images/portfolio/max-print-bot-1.png"
 full_image: "/images/portfolio/max-print-bot-1.png,/images/portfolio/max-print-bot-2.png"
 external_url: "https://max.ru/id410105632646_1_bot"
 technologies: ["PHP", "Laravel", "Max API"]
+tags: ["MAX-бот"]
 order: 7
 ---
 

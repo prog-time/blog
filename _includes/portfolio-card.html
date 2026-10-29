@@ -1,4 +1,4 @@
-<article class="portfolio-card">
+<article class="portfolio-card" data-tags="{{ item.tags | join: '|' | escape }}">
   <a href="{{ item.url | relative_url }}">
     <div class="portfolio-card-image">
       <img

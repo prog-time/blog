@@ -6,6 +6,7 @@ image: "/images/portfolio/postery.png"
 full_image: "/images/portfolio/postery.png"
 external_url: "https://github.com/prog-time/postery"
 technologies: ["Python", "FastAPI", "Telegram API", "VK API", "Max API"]
+tags: ["Open Source", "Инструмент"]
 order: 5
 ---
 
